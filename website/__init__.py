@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_mail import Mail,Message
 db = SQLAlchemy()     
 DB_NAME = "database.db"
+mail = Mail()
 def create_app():
     app = Flask(__name__)
     app.config["SECRET_KEY"] = "210606"
@@ -12,12 +13,11 @@ def create_app():
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
     app.config['MAIL_PORT'] = 465
     app.config['MAIL_USE_SSL'] = True
-    app.config['MAIL_USERNAME'] = ''
-    app.config['MAIL_PASSWORD'] = 'wpkgxtebqcfvcapu'
-    app.config['MAIL_DEFAULT_SENDER'] = ''
-    mail = Mail(app)
+    app.config['MAIL_USERNAME'] = 'ishayu.ghosh@gmail.com'
+    app.config['MAIL_PASSWORD'] = 'meesklsgstsrfcrv'
+    app.config['MAIL_DEFAULT_SENDER'] = 'ishayu.ghosh@gmail.com'
     db.init_app(app)
-    
+    mail.init_app(app)
     from .views import views
     from .auth import auth
     
